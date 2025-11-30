@@ -12,15 +12,19 @@
         <header class="app-header">
             <h1 class="app-title">Noise/Stim Control</h1>
             <div class="header-controls">
-                <button class="icon-button help-button" aria-label="Ayuda">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                <!-- Botón ayuda -->
+                <button type="button" class="icon-button help-button" aria-label="Ayuda">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                         <line x1="12" y1="17" x2="12" y2="17"></line>
                     </svg>
                 </button>
-                <button class="icon-button settings-button" aria-label="Configuración">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                <!-- Botón configuración -->
+                <button type="button" class="icon-button settings-button" aria-label="Configuración">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
                         <circle cx="12" cy="12" r="3"></circle>
                         <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                     </svg>
@@ -38,24 +42,31 @@
 
             <section class="visuals-section">
                 <h2 class="section-title">Visualizaciones</h2>
+
                 <div class="visuals-selector">
-                    <div class="visual-option" data-visual="waves">
+
+                    <!-- Cada opción convertida en button (accesible + keyboard) -->
+                    <button type="button" class="visual-option" data-visual="waves">
                         <div class="visual-preview"></div>
                         <span>Ondas</span>
-                    </div>
-                    <div class="visual-option" data-visual="particles">
+                    </button>
+
+                    <button type="button" class="visual-option" data-visual="particles">
                         <div class="visual-preview"></div>
                         <span>Partículas</span>
-                    </div>
-                    <div class="visual-option" data-visual="gradient">
+                    </button>
+
+                    <button type="button" class="visual-option" data-visual="gradient">
                         <div class="visual-preview"></div>
                         <span>Degradado</span>
-                    </div>
-                    <div class="visual-option" data-visual="none">
+                    </button>
+
+                    <button type="button" class="visual-option" data-visual="none">
                         <div class="visual-preview"></div>
                         <span>Ninguna</span>
-                    </div>
+                    </button>
                 </div>
+
                 <div class="visual-intensity-control">
                     <label for="intensitySlider">Intensidad visual</label>
                     <input type="range" id="intensitySlider" min="0" max="100" value="50">
@@ -65,24 +76,33 @@
             <section class="presets-section">
                 <h2 class="section-title">Configuraciones Rápidas</h2>
                 <div class="presets-grid">
-                    <button class="preset-button" data-preset="focus">Enfocar</button>
-                    <button class="preset-button" data-preset="calm">Calmar</button>
-                    <button class="preset-button" data-preset="sleep">Dormir</button>
-                    <button class="preset-button" data-preset="reset">Reiniciar</button>
+                    <button type="button" class="preset-button" data-preset="focus">Enfocar</button>
+                    <button type="button" class="preset-button" data-preset="calm">Calmar</button>
+                    <button type="button" class="preset-button" data-preset="sleep">Dormir</button>
+                    <button type="button" class="preset-button" data-preset="reset">Reiniciar</button>
                 </div>
             </section>
         </main>
 
         <footer class="app-footer">
             <div class="playback-controls">
-                <button class="play-pause-button" id="playPauseButton" aria-label="Reproducir">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+
+                <!-- Play / Pause accesible -->
+                <button 
+                    type="button" 
+                    class="play-pause-button" 
+                    id="playPauseButton" 
+                    aria-label="Reproducir"
+                    aria-pressed="false"
+                >
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
                         <polygon points="5,3 19,12 5,21" id="play-icon"></polygon>
                         <rect x="6" y="4" width="4" height="16" id="pause-icon" style="display: none;"></rect>
                         <rect x="14" y="4" width="4" height="16" id="pause-icon-2" style="display: none;"></rect>
                     </svg>
                 </button>
-                <div class="status-indicator" id="statusIndicator">
+
+                <div class="status-indicator" id="statusIndicator" aria-live="polite">
                     Listo
                 </div>
             </div>
@@ -93,11 +113,11 @@
     </div>
 
     <!-- Modal de ayuda -->
-    <div class="modal" id="helpModal">
+    <div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Ayuda - Noise/Stim Control</h2>
-                <button class="close-button" id="closeHelpModal">&times;</button>
+                <h2 id="helpModalTitle">Ayuda - Noise/Stim Control</h2>
+                <button type="button" class="close-button" id="closeHelpModal" aria-label="Cerrar ventana de ayuda">&times;</button>
             </div>
             <div class="modal-body">
                 <p>Esta herramienta te ayuda a crear ambientes sonoros y visuales personalizados para mejorar tu concentración o relajación.</p>
@@ -113,6 +133,7 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="js/audio-engine.js"></script>
     <script src="js/visualizer.js"></script>
     <script src="js/ui-controller.js"></script>
