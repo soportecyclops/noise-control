@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noise/Stim Control - Generador de Sonidos Ambientales</title>
     <meta name="description" content="Herramienta para generar sonidos ambientales y visuales calmantes para personas neurodivergentes">
-<link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <div class="app-container">
+
         <!-- ====================== HEADER ====================== -->
         <header class="app-header">
             <h1 class="app-title">Noise/Stim Control</h1>
 
             <div class="header-controls">
+                <!-- Ayuda -->
                 <button class="icon-button help-button" aria-label="Ayuda" id="openHelpModal">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -23,10 +25,11 @@
                     </svg>
                 </button>
 
-                <button class="icon-button settings-button" aria-label="Configuración">
+                <!-- Configuración -->
+                <button class="icon-button settings-button" aria-label="Configuración" id="openSettingsModal">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
                     </svg>
                 </button>
             </div>
@@ -35,55 +38,134 @@
         <!-- ====================== MAIN ====================== -->
         <main class="app-main">
 
-            <!-- 🎵 SONIDOS -->
+            <!-- 🎵 SONIDOS (con pestañas del segundo código, compatibilidad con el primero) -->
             <section class="sounds-section">
                 <h2 class="section-title">Sonidos Ambientales</h2>
                 <div class="sounds-grid" id="soundsGrid">
-                    <!-- Las sound-cards se insertan aquí dinámicamente -->
+                    <!-- Ahora soporta ambos sistemas: tarjetas y pestañas -->
                 </div>
             </section>
 
-            <!-- ✨ VISUALIZACIONES -->
+            <!-- 🎨 CONTROLES DE COLOR (añadido) -->
+            <section class="colors-section">
+                <h2 class="section-title">Colores de Visualización</h2>
+
+                <div class="color-controls">
+
+                    <div class="color-control">
+                        <label for="primaryColor">Color Primario</label>
+                        <div class="color-input-group">
+                            <input type="color" id="primaryColor" value="#4a6fa5" class="color-input">
+                            <div class="color-preview" id="primaryPreview" style="background-color: #4a6fa5"></div>
+                        </div>
+                    </div>
+
+                    <div class="color-control">
+                        <label for="secondaryColor">Color Secundario</label>
+                        <div class="color-input-group">
+                            <input type="color" id="secondaryColor" value="#9f7aea" class="color-input">
+                            <div class="color-preview" id="secondaryPreview" style="background-color: #9f7aea"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ✨ VISUALIZACIONES (fusionado: incluye todos los tipos) -->
             <section class="visuals-section">
                 <h2 class="section-title">Visualizaciones</h2>
 
                 <div class="visuals-selector">
+
+                    <!-- Tipos del primer código -->
                     <div class="visual-option" data-visual="waves">
                         <div class="visual-preview"></div>
-                        <span>Ondas</span>
+                        <span>Ondas (v1)</span>
                     </div>
 
                     <div class="visual-option" data-visual="particles">
                         <div class="visual-preview"></div>
-                        <span>Partículas</span>
+                        <span>Partículas (v1)</span>
                     </div>
 
                     <div class="visual-option" data-visual="gradient">
                         <div class="visual-preview"></div>
-                        <span>Degradado</span>
+                        <span>Degradado (v1)</span>
                     </div>
 
                     <div class="visual-option" data-visual="none">
                         <div class="visual-preview"></div>
                         <span>Ninguna</span>
                     </div>
+
+                    <!-- Tipos del segundo código -->
+                    <div class="visual-option" data-visual="spectrum">
+                        <div class="visual-preview"></div>
+                        <span>Espectro</span>
+                    </div>
+
+                    <div class="visual-option" data-visual="wave">
+                        <div class="visual-preview"></div>
+                        <span>Ondas (v2)</span>
+                    </div>
+
+                    <div class="visual-option" data-visual="bubbles">
+                        <div class="visual-preview"></div>
+                        <span>Burbujas</span>
+                    </div>
+
+                    <div class="visual-option" data-visual="circular">
+                        <div class="visual-preview"></div>
+                        <span>Circular</span>
+                    </div>
+
+                    <div class="visual-option" data-visual="stars">
+                        <div class="visual-preview"></div>
+                        <span>Estrellas</span>
+                    </div>
+
+                    <div class="visual-option" data-visual="fluid">
+                        <div class="visual-preview"></div>
+                        <span>Fluido</span>
+                    </div>
+
                 </div>
 
                 <div class="visual-intensity-control">
-                    <label for="intensitySlider">Intensidad visual</label>
+                    <label for="intensitySlider">Intensidad visual: <span id="intensityValue">50%</span></label>
                     <input type="range" id="intensitySlider" min="0" max="100" value="50">
                 </div>
             </section>
 
-            <!-- ⚡ PRESETS -->
+            <!-- ⚡ PRESETS (fusionado: incluye todos) -->
             <section class="presets-section">
                 <h2 class="section-title">Configuraciones Rápidas</h2>
 
                 <div class="presets-grid">
-                    <button class="preset-button" data-preset="focus">Enfocar</button>
-                    <button class="preset-button" data-preset="calm">Calmar</button>
-                    <button class="preset-button" data-preset="sleep">Dormir</button>
-                    <button class="preset-button" data-preset="reset">Reiniciar</button>
+                    <button class="preset-button" data-preset="focus">
+                        <span class="preset-icon">🎯</span>
+                        <span>Enfocar</span>
+                    </button>
+
+                    <button class="preset-button" data-preset="calm">
+                        <span class="preset-icon">🌿</span>
+                        <span>Calmar</span>
+                    </button>
+
+                    <button class="preset-button" data-preset="sleep">
+                        <span class="preset-icon">🌙</span>
+                        <span>Dormir</span>
+                    </button>
+
+                    <button class="preset-button" data-preset="creative">
+                        <span class="preset-icon">🎨</span>
+                        <span>Creativo</span>
+                    </button>
+
+                    <button class="preset-button" data-preset="reset">
+                        <span class="preset-icon">🔄</span>
+                        <span>Reiniciar</span>
+                    </button>
                 </div>
             </section>
 
@@ -104,25 +186,7 @@
             </div>
         </footer>
 
-        <!-- ====================== TEMPLATE DE SOUND-CARDS ====================== -->
-        <template id="sound-card-template">
-            <div class="sound-card" data-sound-id="">
-                <div class="sound-info">
-                    <span class="sound-name">Nombre del sonido</span>
-                </div>
-
-                <div class="sound-controls">
-                    <label class="toggle-wrapper">
-                        <input type="checkbox" class="sound-toggle">
-                        <span class="toggle-slider"></span>
-                    </label>
-
-                    <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5">
-                </div>
-            </div>
-        </template>
-
-        <!-- CANVAS -->
+        <!-- ====================== CANVAS ====================== -->
         <canvas id="visualizerCanvas" class="visualizer-canvas"></canvas>
     </div>
 
@@ -137,14 +201,76 @@
             <div class="modal-body">
                 <p>Esta herramienta te ayuda a crear ambientes sonoros y visuales personalizados para mejorar tu concentración o relajación.</p>
 
-                <h3>Cómo usar:</h3>
+                <h3>Cómo usar los sonidos:</h3>
                 <ul>
-                    <li>Selecciona los sonidos que quieras mezclar activando sus interruptores.</li>
-                    <li>Ajusta el volumen de cada sonido.</li>
-                    <li>Elige una visualización si lo deseas.</li>
-                    <li>Usá los presets para configuraciones rápidas.</li>
-                    <li>Hacé clic en reproducir para comenzar.</li>
+                    <li>Selecciona o explora sonidos en las pestañas.</li>
+                    <li>Activa los interruptores para mezclar sonidos.</li>
+                    <li>Ajusta el volumen de cada uno.</li>
+                    <li>Puedes combinar múltiples sonidos a gusto.</li>
                 </ul>
+
+                <h3>Visualizaciones:</h3>
+                <ul>
+                    <li>Todos los estilos del sistema original + nuevos del sistema avanzado.</li>
+                </ul>
+
+                <h3>Presets:</h3>
+                <ul>
+                    <li>Enfocar, Calmar, Dormir, Creativo, Reiniciar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== MODAL DE CONFIGURACIÓN ====================== -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Configuración</h2>
+                <button class="close-button" id="closeSettingsModal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="setting-group">
+                    <h3>Volumen General</h3>
+                    <div class="volume-control">
+                        <input type="range" id="masterVolume" min="0" max="1" step="0.1" value="0.7">
+                        <span id="masterVolumeValue">70%</span>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Transiciones</h3>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="smoothTransitions" checked>
+                        <span class="checkbox-custom"></span>
+                        Transiciones suaves entre sonidos
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Accesibilidad</h3>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="reduceMotion">
+                        <span class="checkbox-custom"></span>
+                        Reducir animaciones
+                    </label>
+
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="highContrast">
+                        <span class="checkbox-custom"></span>
+                        Alto contraste
+                    </label>
+                </div>
+
+                <div class="setting-group">
+                    <h3>Datos</h3>
+                    <button class="secondary-button" id="exportSettings">Exportar configuración</button>
+                    <button class="secondary-button" id="importSettings">Importar configuración</button>
+                    <button class="secondary-button" id="resetAll">Restablecer todo</button>
+                </div>
+
             </div>
         </div>
     </div>
