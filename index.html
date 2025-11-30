@@ -7,64 +7,75 @@
     <meta name="description" content="Herramienta para generar sonidos ambientales y visuales calmantes para personas neurodivergentes">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <div class="app-container">
+    <div id="app" class="app-container">
+
+        <!-- ====================== HEADER ====================== -->
         <header class="app-header">
             <h1 class="app-title">Noise/Stim Control</h1>
-            <div class="header-controls">
 
-                <!-- Botón ayuda -->
-                <button type="button" class="icon-button help-button" aria-label="Ayuda">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
+            <div class="header-controls">
+                <button type="button" class="icon-button help-button" aria-label="Ayuda" id="openHelpModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
                         <line x1="12" y1="17" x2="12" y2="17"></line>
                     </svg>
                 </button>
 
-                <!-- Botón configuración -->
                 <button type="button" class="icon-button settings-button" aria-label="Configuración">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83
+                        2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33A1.65 1.65 0 0 0 14 21v.09a2 2 0 0 1-2 2
+                        2 2 0 0 1-2-2V21a1.65 1.65 0 0 0-1-1.51A1.65 1.65 0 0 0 7.18 18l-.06.06a2 2 0 0 1-2.83 0
+                        2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15H3a2 2 0 0 1 0-4h1.09c.7 0 1.3-.43 1.51-1
+                        A1.65 1.65 0 0 0 5.27 8.18l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06
+                        a1.65 1.65 0 0 0 1.82.33H10a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09c0 .7.43 1.3 1 1.51
+                        a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 20 9v.09
+                        c0 .7.43 1.3 1.51 1H21a2 2 0 0 1 0 4h-1.09c-.7 0-1.3.43-1.51 1z"></path>
                     </svg>
                 </button>
             </div>
         </header>
 
+        <!-- ====================== MAIN ====================== -->
         <main class="app-main">
+
+            <!-- SONIDOS -->
             <section class="sounds-section">
                 <h2 class="section-title">Sonidos Ambientales</h2>
+
                 <div class="sounds-grid" id="soundsGrid">
-                    <!-- Los sonidos se cargan dinámicamente aquí -->
+                    <!-- Tu JS insertará sound-cards aquí -->
                 </div>
             </section>
 
+            <!-- VISUALES -->
             <section class="visuals-section">
                 <h2 class="section-title">Visualizaciones</h2>
 
                 <div class="visuals-selector">
-
-                    <!-- Cada opción convertida en button (accesible + keyboard) -->
-                    <button type="button" class="visual-option" data-visual="waves">
+                    <div class="visual-option" data-visual="waves">
                         <div class="visual-preview"></div>
                         <span>Ondas</span>
-                    </button>
+                    </div>
 
-                    <button type="button" class="visual-option" data-visual="particles">
+                    <div class="visual-option" data-visual="particles">
                         <div class="visual-preview"></div>
                         <span>Partículas</span>
-                    </button>
+                    </div>
 
-                    <button type="button" class="visual-option" data-visual="gradient">
+                    <div class="visual-option" data-visual="gradient">
                         <div class="visual-preview"></div>
                         <span>Degradado</span>
-                    </button>
+                    </div>
 
-                    <button type="button" class="visual-option" data-visual="none">
+                    <div class="visual-option" data-visual="none">
                         <div class="visual-preview"></div>
                         <span>Ninguna</span>
-                    </button>
+                    </div>
                 </div>
 
                 <div class="visual-intensity-control">
@@ -73,54 +84,50 @@
                 </div>
             </section>
 
+            <!-- PRESETS -->
             <section class="presets-section">
                 <h2 class="section-title">Configuraciones Rápidas</h2>
+
                 <div class="presets-grid">
-                    <button type="button" class="preset-button" data-preset="focus">Enfocar</button>
-                    <button type="button" class="preset-button" data-preset="calm">Calmar</button>
-                    <button type="button" class="preset-button" data-preset="sleep">Dormir</button>
-                    <button type="button" class="preset-button" data-preset="reset">Reiniciar</button>
+                    <button class="preset-button" data-preset="focus">Enfocar</button>
+                    <button class="preset-button" data-preset="calm">Calmar</button>
+                    <button class="preset-button" data-preset="sleep">Dormir</button>
+                    <button class="preset-button" data-preset="reset">Reiniciar</button>
                 </div>
             </section>
         </main>
 
+        <!-- ====================== FOOTER ====================== -->
         <footer class="app-footer">
             <div class="playback-controls">
-
-                <!-- Play / Pause accesible -->
-                <button 
-                    type="button" 
-                    class="play-pause-button" 
-                    id="playPauseButton" 
-                    aria-label="Reproducir"
-                    aria-pressed="false"
-                >
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" focusable="false">
+                <button type="button" class="play-pause-button" id="playPauseButton" aria-label="Reproducir">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <polygon points="5,3 19,12 5,21" id="play-icon"></polygon>
                         <rect x="6" y="4" width="4" height="16" id="pause-icon" style="display: none;"></rect>
                         <rect x="14" y="4" width="4" height="16" id="pause-icon-2" style="display: none;"></rect>
                     </svg>
                 </button>
 
-                <div class="status-indicator" id="statusIndicator" aria-live="polite">
-                    Listo
-                </div>
+                <div class="status-indicator" id="statusIndicator">Listo</div>
             </div>
         </footer>
 
-        <!-- Canvas para visualizaciones -->
+        <!-- Canvas visualizer -->
         <canvas id="visualizerCanvas" class="visualizer-canvas"></canvas>
+
     </div>
 
-    <!-- Modal de ayuda -->
-    <div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle">
+    <!-- ====================== MODAL ====================== -->
+    <div class="modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="helpModalTitle">Ayuda - Noise/Stim Control</h2>
-                <button type="button" class="close-button" id="closeHelpModal" aria-label="Cerrar ventana de ayuda">&times;</button>
+                <h2 id="helpTitle">Ayuda - Noise/Stim Control</h2>
+                <button class="close-button" id="closeHelpModal" aria-label="Cerrar ventana">&times;</button>
             </div>
+
             <div class="modal-body">
                 <p>Esta herramienta te ayuda a crear ambientes sonoros y visuales personalizados para mejorar tu concentración o relajación.</p>
+
                 <h3>Cómo usar:</h3>
                 <ul>
                     <li>Selecciona los sonidos que quieras mezclar activando sus interruptores</li>
@@ -133,7 +140,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- JS -->
     <script src="js/audio-engine.js"></script>
     <script src="js/visualizer.js"></script>
     <script src="js/ui-controller.js"></script>
